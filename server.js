@@ -8,6 +8,11 @@ app.get('/movies/:id', function (req, res) {
 });
 
 //QUERY STRING
+app.get('/youtube', function (req, res) {
+	var ricerca = req.query.v || '';
+	res.send(`lista dei video con nome: ${ricerca}`);
+});
+
 app.get('/movies', function (req, res) {
 	var titolo = req.query.titolo || 'no titolo';
 	var year = req.query.year || 'no anno';
@@ -15,7 +20,7 @@ app.get('/movies', function (req, res) {
 	res.send(`film con titolo: ${titolo}, dell'anno: ${year} e con attore: ${actor}`);
 });
 
-app.get('/movies', function (req, res) {});
+
 
 
 //START DEL SERVER
