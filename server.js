@@ -1,18 +1,30 @@
 var express = require('express');
 var app = express();
 
-//PARAMS
+app.get('/', function (req, res) {
+	res.send(`Benvenuto`);
+});
+
+//PARAMS 1
 app.get('/movies/:id', function (req, res) {
 	var id = req.params.id;
 	res.send(`dettaglio del film con id ${id}`);
 });
 
-//QUERY STRING
+//PARAMS 2
+app.get('/post/:idpost/comment/:idcomment', function (req, res) {
+	var idpost = req.params.idpost;
+	var idcomment = req.params.idcomment;
+	res.send(`commento con id ${idcomment} del post con id ${idpost}`);
+});
+
+//QUERY STRING 1
 app.get('/youtube', function (req, res) {
 	var ricerca = req.query.v || '';
 	res.send(`lista dei video con nome: ${ricerca}`);
 });
 
+//QUERY STRING 2
 app.get('/movies', function (req, res) {
 	var titolo = req.query.titolo || 'no titolo';
 	var year = req.query.year || 'no anno';
